@@ -2,8 +2,10 @@ $SP = absolute path to scripts folder
 
 $CACHE_RANGE = (1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072)
 
+# Write header for csv
 Write-Output "dcache size,icache size,test case, steps in testcase, stepsize in test case, result, ticks taken, Logic utilization (in ALMs), Logic utilization (in ALMs) usage, Total registers, Total block memory bits, Total block memory bits usage, Total RAM Blocks, Total RAM Blocks usage, Slack conditions met"
 
+# Loop through and extrac data
 foreach ($dcache in $CACHE_RANGE) {
     foreach ($icache in $CACHE_RANGE) {
         foreach ($i in (1, 2, 3)) {
