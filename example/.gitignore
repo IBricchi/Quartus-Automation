@@ -1,0 +1,8 @@
+*
+!.gitignore
+
+!generate
+
+!change-cache.ps1
+!get_data.ps1
+!loop_caches.ps1

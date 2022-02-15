@@ -1,0 +1,15 @@
+*
+!.gitignore
+!README.md
+
+!out
+!build
+
+!quartus
+!eclipse
+
+!build-all.ps1
+!config.ps1
+!loop_caches.ps1
+
+!example
