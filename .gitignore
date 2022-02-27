@@ -9,6 +9,7 @@
 !eclipse
 
 !build-all.ps1
+!run.ps1
 !config.ps1
 !loop_caches.ps1
 

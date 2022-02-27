@@ -1,8 +1,4 @@
 $PREVD = $pwd
-cd <parent of scripts folder>
-
-# load config data
-. ./scripts/config.ps1
 
 $dcache = $args[0]
 $icache = $args[1]
@@ -19,7 +15,7 @@ $N_RANGE = ("52","2051","261121")
 $BUILD_NAME="task3-dcache-$dcache-icache-$icache"
 
 # Generate qsys tcl file for specific dcache and icache
-python "$pwd/scripts/example/generate/gen_qsys_task2_cache.py" $dcache $icache $QP
+python "$SP/example/generate/gen_qsys_cache.py" $dcache $icache $QP
 
 # loop over c test cases
 foreach ($i in (3))
@@ -31,17 +27,20 @@ foreach ($i in (3))
     # Generate c file for specific test
     $STEP = $STEP_RANGE[$i-1]
     $N = $N_RANGE[$i-1]
-    python "$pwd/scripts/example/generate/gen_c_file.py" $STEP $N $i $dcache $icache $EP
+    python "$SP/example/generate/gen_c_file.py" $STEP $N $i $dcache $icache $EP
     
+    # Set guard variable
+    $GAURD = "$dcache $icache $i"
+
     # Log test case to terminal
     Write-Output "-------------------------------------------------------------------------------"
     log ("Running test " + $NAME)
     Write-Output "-------------------------------------------------------------------------------"
     
     # Run build command (also runs, and saves everything, more lika a run-all command)
-    ./scripts/build-all.ps1
+    ./run.ps1
 
-    # Pring outtput of nios-termianl to screen
+    # Print outtput of nios-termianl to screen
     Get-Content "$SP/out/$NAME/nios.out"
 }
 
